@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>진지관 | 베이킹으로 연결하는 동아리</title>
+  <style>
+    body{margin:0;font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.6;background:#fafafa;color:#111}
+    header{padding:56px 20px;background:linear-gradient(135deg,#fff 0%,#f2f7ff 60%,#fff 100%);border-bottom:1px solid #eee}
+    .wrap{max-width:960px;margin:0 auto}
+    nav{display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .logo{font-weight:800}
+    nav a{text-decoration:none;color:#111;opacity:.8;margin-left:12px}
+    nav a:hover{opacity:1}
+    h1{font-size:40px;line-height:1.15;margin:24px 0 10px}
+    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid #ddd;background:#fff;color:#111;text-decoration:none}
+    .primary{background:#111;color:#fff;border-color:#111}
+    main{padding:18px 20px 30px}
+    .grid{max-width:960px;margin:0 auto;display:grid;gap:14px}
+    .card{background:#fff;border:1px solid #eee;border-radius:18px;padding:18px;box-shadow:0 6px 20px rgba(0,0,0,.04)}
+    .hint{font-size:13px;opacity:.7}
+    footer{text-align:center;padding:22px 12px;font-size:13px;opacity:.7}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <div class="logo">진지관</div>
+        <div>
+          <a href="#about">소개</a>
+          <a href="#campaign">활동</a>
+          <a href="#join">참여</a>
+          <a href="#contact">문의</a>
+        </div>
+      </nav>
+
+      <h1>베이킹으로 사람과 사람을 연결합니다.</h1>
+      <p>외대부고 요리/베이킹 동아리 진지관 — 비영리 캠페인과 모금 활동을 운영합니다.</p>
+      <div class="btns">
+        <a class="btn primary" href="#join">참여하기</a>
+        <a class="btn" href="#campaign">활동 보기</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid">
+      <section id="about" class="card">
+        <h2>진지관 소개</h2>
+        <p>진지관은 베이킹을 매개로 교내 구성원과 지역사회가 자연스럽게 연결되도록 활동합니다.</p>
+      </section>
+
+      <section id="campaign" class="card">
+        <h2>캠페인 / 모금 활동</h2>
+        <ul>
+          <li>교내 모금 부스 운영</li>
+          <li>비영리 캠페인 기획 및 진행</li>
+          <li>협력 기관과의 연계 활동</li>
+        </ul>
+      </section>
+
+      <section id="join" class="card">
+        <h2>참여 방법</h2>
+        <p>참가/후원/협력 문의는 아래 버튼으로 연결하세요.</p>
+        <a class="btn primary" href="#" onclick="alert('여기에 구글폼 링크를 href로 넣으면 끝!')">참여/문의 폼</a>
+        <p class="hint">* 나중에 구글폼 링크로 교체하면 됩니다.</p>
+      </section>
+
+      <section id="contact" class="card">
+        <h2>문의</h2>
+        <p class="hint">인스타/이메일/카톡 링크를 넣어주세요.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>© <span id="year"></span> 진지관</footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+</body>
+</html>
