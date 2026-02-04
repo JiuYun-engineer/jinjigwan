@@ -1,23 +1,24 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="진지관 — 베이킹과 요리로 연결을 만들고, 캠페인과 모금으로 지역사회에 기여하는 학생 NGO형 동아리" />
-  <title>진지관 Jinjigwan | Baking & Cooking for Good</title>
+  <meta name="description" content="Jinjigwan — a student-run baking & cooking club (NGO-style) that runs nonprofit campaigns and fundraising initiatives." />
+  <title>Jinjigwan | Baking & Cooking for Good</title>
 
-  <!-- Fonts (Google Fonts) -->
+  <!-- Fonts (optional). If blocked, the page still looks fine. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg:#070607;
       --bg2:#0c0b0e;
-      --card:rgba(255,255,255,.055);
-      --card2:rgba(255,255,255,.075);
-      --line:rgba(255,255,255,.10);
+
+      --card:rgba(255,255,255,.060);
+      --card2:rgba(255,255,255,.085);
+      --line:rgba(255,255,255,.11);
       --soft:rgba(255,255,255,.06);
 
       --gold:#d8b46b;
@@ -36,19 +37,20 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family:"Noto Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo", sans-serif;
+      font-family: Inter, system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans", sans-serif;
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 10% nd 0%, rgba(216,180,107,.22), transparent 60%),
+        radial-gradient(900px 520px at 10% 0%, rgba(216,180,107,.22), transparent 60%),
         radial-gradient(1000px 620px at 90% 0%, rgba(241,211,140,.12), transparent 62%),
         radial-gradient(900px 680px at 50% 120%, rgba(216,180,107,.12), transparent 60%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
       overflow-x:hidden;
     }
     a{color:inherit}
+
     .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
 
-    /* Decorative “gold foil” */
+    /* Gold foil text */
     .gold{
       color:transparent;
       background:
@@ -60,7 +62,7 @@
       text-shadow: 0 0 28px rgba(216,180,107,.10);
     }
 
-    /* Greek-key-ish border using CSS repeating gradients */
+    /* Border overlay (subtle) */
     .keyline{
       position:absolute; inset:-2px;
       border-radius:inherit;
@@ -78,67 +80,91 @@
       -webkit-mask-composite: xor;
       opacity:.55;
     }
+
     .frame{
       position:relative;
       border:1px solid rgba(216,180,107,.18);
       border-radius:var(--r2);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background:linear-gradient(180deg, rgba(255,255,255,.070), rgba(255,255,255,.030));
       box-shadow: var(--shadow);
+      overflow:hidden;
     }
 
-    /* Top nav */
-    header{
-      padding:28px 0 22px;
-      position:relative;
+    /* Decorative corner ornaments */
+    .orn{
+      position:absolute; width:240px; height:240px; border-radius:40px;
+      border:1px solid rgba(216,180,107,.10);
+      background:
+        repeating-linear-gradient(90deg, rgba(216,180,107,.06) 0 2px, transparent 2px 14px),
+        repeating-linear-gradient(0deg, rgba(216,180,107,.04) 0 2px, transparent 2px 16px);
+      opacity:.45;
+      transform: rotate(18deg);
+      pointer-events:none;
+      filter: blur(.2px);
     }
+    .orn.one{left:-90px; top:-70px}
+    .orn.two{right:-120px; top:120px; transform: rotate(-12deg)}
+
+    /* Top nav */
+    header{padding:28px 0 22px; position:relative}
     .topnav{
       display:flex; align-items:center; justify-content:space-between; gap:14px;
       padding:14px 16px;
     }
-    .brand{
-      display:flex; align-items:center; gap:12px; min-width:240px;
-    }
-    .logo{
-      width:42px; height:42px; border-radius:14px;
+    .brand{display:flex; align-items:center; gap:12px; min-width:240px}
+
+    /* Logo */
+    .logoWrap{
+      width:44px; height:44px; border-radius:14px;
       border:1px solid rgba(216,180,107,.25);
       box-shadow: 0 16px 44px rgba(0,0,0,.55);
-      object-fit:cover;
       background:rgba(255,255,255,.04);
+      display:grid; place-items:center;
+      overflow:hidden;
     }
+    .logo{
+      width:100%; height:100%; object-fit:cover;
+      display:block;
+    }
+    .logoFallback{
+      font-family: "Cinzel", serif;
+      font-weight:800;
+      letter-spacing:.08em;
+      color:rgba(245,242,234,.92);
+      font-size:14px;
+    }
+
     .brandTitle{
-      font-family:"Cinzel","Noto Sans KR",serif;
-      letter-spacing:.12em;
+      font-family:"Cinzel",serif;
+      letter-spacing:.14em;
       font-weight:800;
       font-size:14px;
       text-transform:uppercase;
       line-height:1.1;
     }
     .brandSub{font-size:12px;color:var(--muted);margin-top:2px}
+
     nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
     nav a{
       text-decoration:none;
       font-size:13px;
-      color:rgba(245,242,234,.86);
+      color:rgba(245,242,234,.90);
       padding:9px 11px;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.09);
       background:rgba(255,255,255,.03);
       transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      white-space:nowrap;
     }
     nav a:hover{
       transform:translateY(-1px);
       border-color: rgba(216,180,107,.35);
-      background:rgba(216,180,107,.08);
+      background:rgba(216,180,107,.10);
     }
 
     /* Hero */
-    .hero{
-      margin-top:16px;
-      padding:26px 16px 18px;
-    }
-    .heroGrid{
-      display:grid; grid-template-columns: 1.25fr .85fr; gap:14px; align-items:stretch;
-    }
+    .hero{margin-top:16px; padding:26px 16px 18px}
+    .heroGrid{display:grid; grid-template-columns: 1.25fr .85fr; gap:14px; align-items:stretch}
     @media (max-width: 980px){
       .heroGrid{grid-template-columns:1fr}
       .brand{min-width:auto}
@@ -146,7 +172,7 @@
 
     h1{
       margin:10px 0 0;
-      font-family:"Cinzel","Noto Sans KR",serif;
+      font-family:"Cinzel",serif;
       font-weight:800;
       letter-spacing:.02em;
       font-size:46px;
@@ -156,15 +182,12 @@
 
     .lead{
       margin:12px 0 0;
-      color:rgba(245,242,234,.80);
+      color:rgba(245,242,234,.84);
       font-size:16px;
-      max-width:62ch;
+      max-width:64ch;
     }
 
-    .cta{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:16px;
-    }
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
     .btn{
       display:inline-flex; align-items:center; gap:10px; justify-content:center;
       padding:11px 14px;
@@ -174,23 +197,24 @@
       text-decoration:none;
       font-weight:700;
       font-size:14px;
-      transition: transform .12s ease, background .12s ease;
+      transition: transform .12s ease, background .12s ease, opacity .12s ease;
     }
     .btn:hover{transform:translateY(-1px); background:rgba(216,180,107,.10)}
     .btn.primary{
       border-color: transparent;
-      background: linear-gradient(135deg, rgba(241,211,140,.95), rgba(184,147,73,.90));
+      background: linear-gradient(135deg, rgba(241,211,140,.98), rgba(184,147,73,.95));
       color:#1a1410;
       box-shadow: 0 18px 60px rgba(216,180,107,.22);
     }
-    .btn.primary:hover{background: linear-gradient(135deg, rgba(241,211,140,1), rgba(184,147,73,1))}
+    .btn.primary:hover{opacity:.98}
+
     .pill{
       display:inline-flex; align-items:center; gap:8px;
       padding:7px 10px;
       border-radius:999px;
       border:1px solid rgba(216,180,107,.25);
       background:rgba(216,180,107,.08);
-      color:rgba(245,242,234,.86);
+      color:rgba(245,242,234,.90);
       font-size:13px;
       width:fit-content;
     }
@@ -204,13 +228,11 @@
         radial-gradient(700px 300px at 40% 0%, rgba(216,180,107,.22), transparent 60%),
         rgba(255,255,255,.03);
     }
-    .stats{
-      display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px;
-    }
+    .stats{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px}
     .stat{
       padding:12px;
       border-radius:18px;
-      border:1px solid rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.09);
       background:rgba(255,255,255,.03);
     }
     .stat b{display:block;font-size:22px;line-height:1.1}
@@ -221,44 +243,35 @@
       border-radius:18px;
       border:1px solid rgba(216,180,107,.22);
       background:rgba(216,180,107,.08);
-      color:rgba(245,242,234,.86);
+      color:rgba(245,242,234,.90);
       font-size:13px;
     }
 
     /* Sections */
     main{padding:22px 0 54px}
-    .section{
-      margin-top:14px;
-      padding:18px 18px 16px;
-    }
+    .section{margin-top:14px; padding:18px 18px 16px}
     .sectionTitle{
       display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
       margin-bottom:8px;
     }
     h2{
       margin:0;
-      font-family:"Cinzel","Noto Sans KR",serif;
-      letter-spacing:.06em;
+      font-family:"Cinzel",serif;
+      letter-spacing:.10em;
       font-weight:800;
       font-size:22px;
     }
     .kicker{font-size:13px;color:var(--muted)}
-    .grid{
-      display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; align-items:start;
-    }
+    .grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; align-items:start}
     @media (max-width:980px){ .grid{grid-template-columns:1fr} }
 
     .card{
       border-radius:var(--r2);
-      border:1px solid rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.09);
       background:rgba(255,255,255,.03);
       padding:16px;
     }
-    .card h3{
-      margin:0 0 8px;
-      font-size:16px;
-      letter-spacing:.02em;
-    }
+    .card h3{margin:0 0 8px; font-size:16px; letter-spacing:.02em}
     .muted{color:var(--muted)}
     ul{margin:0;padding-left:18px}
     li{margin:7px 0}
@@ -268,7 +281,7 @@
       display:grid; grid-template-columns: 44px 1fr; gap:12px;
       padding:12px;
       border-radius:20px;
-      border:1px solid rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.09);
       background:rgba(255,255,255,.02);
     }
     .badge{
@@ -281,9 +294,7 @@
       color:rgba(245,242,234,.92);
     }
 
-    .gallery{
-      display:grid; grid-template-columns: repeat(3,1fr); gap:10px; margin-top:10px;
-    }
+    .gallery{display:grid; grid-template-columns: repeat(3,1fr); gap:10px; margin-top:10px}
     @media (max-width:760px){ .gallery{grid-template-columns:1fr 1fr} }
     .ph{
       border-radius:18px;
@@ -293,7 +304,7 @@
         rgba(255,255,255,.02);
       aspect-ratio: 4/3;
       display:grid; place-items:center;
-      color:rgba(245,242,234,.62);
+      color:rgba(245,242,234,.70);
       text-align:center;
       padding:10px;
       font-size:13px;
@@ -306,7 +317,7 @@
       border:1px solid rgba(216,180,107,.22);
       background:rgba(255,255,255,.02);
       font-size:13px;
-      color:rgba(245,242,234,.86);
+      color:rgba(245,242,234,.88);
     }
 
     .contactGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -314,36 +325,21 @@
     .field{
       padding:12px;
       border-radius:18px;
-      border:1px solid rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.09);
       background:rgba(255,255,255,.02);
-      color:rgba(245,242,234,.88);
+      color:rgba(245,242,234,.90);
       font-size:13px;
     }
-    .field b{color:rgba(245,242,234,.96)}
+    .field b{color:rgba(245,242,234,.98)}
 
     footer{
       padding:24px 0;
-      border-top:1px solid rgba(255,255,255,.08);
-      color:rgba(245,242,234,.62);
+      border-top:1px solid rgba(255,255,255,.09);
+      color:rgba(245,242,234,.66);
       font-size:13px;
     }
     .footRow{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
-    .small{font-size:12px;color:rgba(245,242,234,.58)}
-
-    /* Subtle corner ornaments */
-    .orn{
-      position:absolute; width:240px; height:240px; border-radius:40px;
-      border:1px solid rgba(216,180,107,.10);
-      background:
-        repeating-linear-gradient(90deg, rgba(216,180,107,.06) 0 2px, transparent 2px 14px),
-        repeating-linear-gradient(0deg, rgba(216,180,107,.04) 0 2px, transparent 2px 16px);
-      filter: blur(.2px);
-      opacity:.45;
-      transform: rotate(18deg);
-      pointer-events:none;
-    }
-    .orn.one{left:-90px; top:-70px}
-    .orn.two{right:-120px; top:120px; transform: rotate(-12deg)}
+    .small{font-size:12px;color:rgba(245,242,234,.60)}
   </style>
 </head>
 
@@ -354,61 +350,69 @@
   <header class="wrap">
     <div class="frame">
       <div class="keyline"></div>
+
       <div class="topnav">
         <div class="brand">
-          <img class="logo" src="8906F14C-340E-4DAC-9DC3-785AE90E0ED3.jpeg" alt="진지관 로고" />
+          <!-- IMPORTANT:
+               Put your logo image in the SAME folder as index.html.
+               If your filename is different, change the src below. -->
+          <div class="logoWrap">
+            <img class="logo" src="logo.jpeg" alt="Jinjigwan logo"
+                 onerror="this.remove(); this.parentElement.innerHTML='<span class=&quot;logoFallback&quot;>JG</span>';" />
+          </div>
           <div>
             <div class="brandTitle gold">JINJIGWAN</div>
-            <div class="brandSub">베이킹 & 요리로 만드는 연결 · NGO형 학생 동아리</div>
+            <div class="brandSub">Baking & Cooking for Good · Student-run NGO-style club</div>
           </div>
         </div>
-        <nav aria-label="메인 메뉴">
-          <a href="#mission">미션</a>
-          <a href="#programs">활동</a>
-          <a href="#impact">임팩트</a>
-          <a href="#partners">파트너</a>
-          <a href="#join">참여</a>
-          <a href="#contact">연락</a>
+
+        <nav aria-label="Primary navigation">
+          <a href="#mission">Mission</a>
+          <a href="#programs">Programs</a>
+          <a href="#impact">Impact</a>
+          <a href="#partners">Partners</a>
+          <a href="#join">Get Involved</a>
+          <a href="#contact">Contact</a>
         </nav>
       </div>
 
       <div class="hero">
         <div class="heroGrid">
           <div>
-            <div class="pill"><span class="dot"></span> 학교 안에서 시작해, 지역사회로 확장합니다</div>
+            <div class="pill"><span class="dot"></span> From school community to local impact</div>
             <h1><span class="gold">Baking</span> that funds <span class="gold">Good</span>.</h1>
             <p class="lead">
-              진지관은 베이킹과 요리 활동을 통해 사람과 사람을 연결하고,
-              캠페인과 모금으로 지역사회에 지속 가능한 선한 영향력을 만드는 동아리입니다.
+              Jinjigwan is a baking & cooking club at Hankuk Academy of Foreign Studies.
+              We run nonprofit campaigns and fundraising initiatives to create sustainable impact.
             </p>
 
             <div class="cta">
-              <!-- TODO: 아래 링크를 실제 구글폼/인스타/노션 등으로 바꿔주세요 -->
-              <a class="btn primary" href="#join">가입/협업 문의</a>
-              <a class="btn" href="#programs">활동 보기</a>
-              <a class="btn" href="#impact">투명성</a>
+              <!-- Replace # with your real links (Google Form / Instagram / Notion) -->
+              <a class="btn primary" href="#join">Join / Collaborate</a>
+              <a class="btn" href="#programs">See Programs</a>
+              <a class="btn" href="#impact">Transparency</a>
             </div>
 
             <p class="small" style="margin-top:10px">
-              버튼 링크는 나중에 <b>Google Form</b> / <b>Instagram</b> / <b>Notion</b> 링크로 연결하면 NGO 느낌이 확 살아납니다.
+              Pro tip: link “Join / Collaborate” to a Google Form (membership + inquiry).
             </p>
           </div>
 
           <aside class="heroRight">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
-              <div style="font-family:'Cinzel',serif;letter-spacing:.08em;font-weight:800">AT A GLANCE</div>
-              <div class="kicker">숫자는 실제 값으로 교체</div>
+              <div style="font-family:'Cinzel',serif;letter-spacing:.10em;font-weight:800">AT A GLANCE</div>
+              <div class="kicker">Replace with real numbers</div>
             </div>
 
             <div class="stats">
-              <div class="stat"><b class="gold">2+</b><span>모금 부스</span></div>
-              <div class="stat"><b class="gold">₩—</b><span>기부 전달액</span></div>
-              <div class="stat"><b class="gold">—</b><span>봉사/운영 시간</span></div>
-              <div class="stat"><b class="gold">—</b><span>MOU/파트너</span></div>
+              <div class="stat"><b class="gold">2+</b><span>Fundraising booths</span></div>
+              <div class="stat"><b class="gold">$—</b><span>Donations delivered</span></div>
+              <div class="stat"><b class="gold">—</b><span>Volunteer hours</span></div>
+              <div class="stat"><b class="gold">—</b><span>MOUs / partners</span></div>
             </div>
 
             <div class="note">
-              <b>투명성 원칙</b> · 수익/비용/기부 내역을 간단한 월간 보고서로 공개합니다.
+              <b>Transparency:</b> we publish a simple monthly summary (income, costs, donation).
             </div>
           </aside>
         </div>
@@ -417,39 +421,37 @@
   </header>
 
   <main class="wrap">
-
     <section id="mission" class="frame section">
       <div class="keyline"></div>
       <div class="sectionTitle">
         <h2 class="gold">MISSION</h2>
-        <div class="kicker">진지관이 하는 일의 “이유”</div>
+        <div class="kicker">Why we exist</div>
       </div>
 
       <div class="grid">
         <div class="card">
-          <h3>우리가 만드는 연결</h3>
+          <h3>Connection through food</h3>
           <p class="muted" style="margin-top:0">
-            베이킹은 부담 없이 다가갈 수 있는 ‘따뜻한 언어’입니다.
-            우리는 이 언어로 학교 공동체를 단단히 하고,
-            그 힘을 지역사회로 확장합니다.
+            Baking is a warm language anyone can understand.
+            We use it to strengthen our school community—and extend support to the local community.
           </p>
           <ul>
-            <li><b>Connection</b> — 음식으로 관계를 연결</li>
-            <li><b>Service</b> — 지속 가능한 기부/캠페인</li>
-            <li><b>Craft</b> — 품질과 위생, 책임 있는 운영</li>
-            <li><b>Transparency</b> — 수익/지출/기부 공개</li>
+            <li><b>Connection</b> — bringing people together</li>
+            <li><b>Service</b> — sustainable giving & campaigns</li>
+            <li><b>Craft</b> — quality, safety, responsibility</li>
+            <li><b>Transparency</b> — clear reporting</li>
           </ul>
         </div>
 
         <div class="card">
-          <h3>운영 약속</h3>
+          <h3>What we promise</h3>
           <ul>
-            <li>행사 전: 메뉴/가격/기부 목표를 명확히 공지</li>
-            <li>행사 후: 원가/포장비/기부액을 간단히 정리</li>
-            <li>기부 전달: 파트너 동의 하에 인증(사진/확인서)</li>
+            <li>Before events: publish menu, prices, and donation goal</li>
+            <li>After events: share a simple cost breakdown and donation amount</li>
+            <li>Donation delivery: document with partner approval</li>
           </ul>
           <p class="muted" style="margin-bottom:0">
-            * 학교 정책/외부기관 규정에 맞춰 절차를 설계합니다.
+            * We design our process to align with school policies and partner guidelines.
           </p>
         </div>
       </div>
@@ -459,7 +461,7 @@
       <div class="keyline"></div>
       <div class="sectionTitle">
         <h2 class="gold">PROGRAMS</h2>
-        <div class="kicker">동아리 활동을 “프로그램”으로 보이게</div>
+        <div class="kicker">Activities that look like an NGO</div>
       </div>
 
       <div class="grid">
@@ -468,49 +470,49 @@
             <div class="prog">
               <div class="badge">01</div>
               <div>
-                <h3>교내 베이킹 부스 / 프리오더</h3>
-                <div class="muted">정기 부스 운영, 시즌 메뉴, 예약 판매로 안정적인 모금</div>
+                <h3>On-campus bake sales & pre-orders</h3>
+                <div class="muted">Seasonal menus, booth operations, and repeatable fundraising</div>
               </div>
             </div>
 
             <div class="prog">
               <div class="badge">02</div>
               <div>
-                <h3>캠페인형 모금</h3>
-                <div class="muted">명확한 메시지(왜 이 문제인가) + 목표(얼마/언제/어디에)</div>
+                <h3>Campaign-based fundraising</h3>
+                <div class="muted">A clear story (why it matters) + a measurable goal</div>
               </div>
             </div>
 
             <div class="prog">
               <div class="badge">03</div>
               <div>
-                <h3>기관 협업 & MOU 프로젝트</h3>
-                <div class="muted">일회성 기부가 아니라, 정기적/지속적 연결 구조 만들기</div>
+                <h3>Collaboration & MOU projects</h3>
+                <div class="muted">Build long-term relationships, not one-off donations</div>
               </div>
             </div>
 
             <div class="prog">
               <div class="badge">04</div>
               <div>
-                <h3>푸드 교육/공유(옵션)</h3>
-                <div class="muted">초보 레시피, 위생 가이드, 작은 워크숍 등</div>
+                <h3>Food education & sharing (optional)</h3>
+                <div class="muted">Beginner recipes, safety guides, small workshops</div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="card">
-          <h3>갤러리 (사진 넣을 자리)</h3>
-          <div class="muted">아래 박스를 실제 이미지로 교체하면 “브랜드”가 완성됩니다.</div>
+          <h3>Gallery (add real photos)</h3>
+          <div class="muted">Replace the placeholders with your best 3 photos to complete the brand.</div>
 
           <div class="gallery">
-            <div class="ph">부스 운영 사진<br><span class="muted">학교 행사</span></div>
-            <div class="ph">제품/포장 사진<br><span class="muted">메뉴</span></div>
-            <div class="ph">기부 전달 사진<br><span class="muted">파트너 동의 후</span></div>
+            <div class="ph">Booth / event photo</div>
+            <div class="ph">Menu / packaging photo</div>
+            <div class="ph">Donation delivery photo</div>
           </div>
 
           <p class="small" style="margin-bottom:0">
-            이미지 파일을 같은 폴더에 두고 <code style="color:var(--gold)">src="photo1.jpg"</code>처럼 연결하면 됩니다.
+            Put images in the same folder and use <b>&lt;img src="photo1.jpg"&gt;</b>.
           </p>
         </div>
       </div>
@@ -520,32 +522,32 @@
       <div class="keyline"></div>
       <div class="sectionTitle">
         <h2 class="gold">IMPACT</h2>
-        <div class="kicker">NGO 느낌의 핵심: 임팩트 + 투명성</div>
+        <div class="kicker">Impact + transparency = trust</div>
       </div>
 
       <div class="grid">
         <div class="card">
-          <h3>임팩트 지표 (예시)</h3>
+          <h3>Impact metrics (examples)</h3>
           <ul>
-            <li><b>기부 전달액</b> · ₩—</li>
-            <li><b>행사 횟수</b> · —회</li>
-            <li><b>운영/봉사 시간</b> · —시간</li>
-            <li><b>수혜/참여 인원</b> · —명</li>
+            <li><b>Donations delivered</b> · $—</li>
+            <li><b>Events held</b> · —</li>
+            <li><b>Volunteer hours</b> · —</li>
+            <li><b>People reached</b> · —</li>
           </ul>
           <p class="muted" style="margin-bottom:0">
-            숫자가 크지 않아도 괜찮습니다. 중요한 건 <b>지속성</b>과 <b>정직한 기록</b>입니다.
+            Numbers don’t need to be huge. Consistency and honest reporting matter more.
           </p>
         </div>
 
         <div class="card">
-          <h3>월간 보고서(추천)</h3>
+          <h3>Monthly report (recommended)</h3>
           <p class="muted" style="margin-top:0">
-            PDF 한 장이면 충분해요: <b>수익</b> / <b>비용</b> / <b>기부액</b> / <b>다음 계획</b>.
+            A single-page PDF works: <b>income</b> / <b>costs</b> / <b>donation</b> / <b>what’s next</b>.
           </p>
 
-          <a class="btn" href="#" onclick="alert('여기에 월간 보고서 PDF 링크를 넣어주세요!'); return false;">월간 보고서 보기</a>
+          <a class="btn" href="#" onclick="alert('Replace this with your monthly report PDF link (Notion/Drive).'); return false;">View monthly report</a>
           <p class="small" style="margin-bottom:0">
-            버튼 링크를 노션/구글드라이브 PDF로 바꾸면 됩니다.
+            Replace the button link with a Notion or Google Drive PDF URL.
           </p>
         </div>
       </div>
@@ -555,20 +557,17 @@
       <div class="keyline"></div>
       <div class="sectionTitle">
         <h2 class="gold">PARTNERS</h2>
-        <div class="kicker">협업/수혜 기관을 “브랜드 요소”로</div>
+        <div class="kicker">MOUs, sponsors, recipient orgs</div>
       </div>
 
       <div class="card">
-        <div class="muted">아래는 자리표시자입니다. 실제 파트너명으로 교체해주세요.</div>
+        <div class="muted">Replace the placeholders with real partner names (and logos later).</div>
         <div class="partners">
           <span class="tag">Partner / MOU 01</span>
           <span class="tag">Partner / MOU 02</span>
-          <span class="tag">Donation Recipient</span>
-          <span class="tag">Community Org</span>
+          <span class="tag">Donation recipient</span>
+          <span class="tag">Community organization</span>
         </div>
-        <p class="small" style="margin-bottom:0">
-          로고 파일이 있으면, 태그 대신 카드/로고 줄 형태로 더 예쁘게 만들 수 있어요.
-        </p>
       </div>
     </section>
 
@@ -576,32 +575,32 @@
       <div class="keyline"></div>
       <div class="sectionTitle">
         <h2 class="gold">GET INVOLVED</h2>
-        <div class="kicker">가입 / 협업 / 후원(옵션)</div>
+        <div class="kicker">Join / collaborate / sponsor (optional)</div>
       </div>
 
       <div class="grid">
         <div class="card">
-          <h3>1) 부원으로 참여</h3>
+          <h3>1) Join as a member</h3>
           <ul>
-            <li>베이킹/요리 팀</li>
-            <li>운영/재무(원가, 정산) 팀</li>
-            <li>디자인/촬영/홍보 팀</li>
-            <li>대외협력(MOU/기관연락) 팀</li>
+            <li>Baking & cooking</li>
+            <li>Operations & finance (cost breakdown, reporting)</li>
+            <li>Design / filming / social media</li>
+            <li>External relations (partners, MOUs)</li>
           </ul>
-          <a class="btn primary" href="#" onclick="alert('여기에 가입/문의 Google Form 링크를 넣어주세요!'); return false;">가입/문의 폼 열기</a>
+          <a class="btn primary" href="#" onclick="alert('Replace this with your Google Form URL.'); return false;">Open join / inquiry form</a>
         </div>
 
         <div class="card">
-          <h3>2) 기관/기업 협업</h3>
+          <h3>2) Collaborate</h3>
           <p class="muted" style="margin-top:0">
-            공동 캠페인, 정기 프로젝트, 물품/재료 지원 등 어떤 형태든 환영합니다.
+            Joint campaigns, long-term projects, ingredient support—any format is welcome.
           </p>
           <ul>
-            <li>원하시는 목표(사회문제/수혜 대상)</li>
-            <li>일정(행사 날짜)</li>
-            <li>지원 형태(후원/공동기획/장소 등)</li>
+            <li>Your goal (issue / target group)</li>
+            <li>Timeline (event date)</li>
+            <li>Support type (sponsor / co-host / venue)</li>
           </ul>
-          <a class="btn" href="#contact">연락하기</a>
+          <a class="btn" href="#contact">Contact us</a>
         </div>
       </div>
     </section>
@@ -610,7 +609,7 @@
       <div class="keyline"></div>
       <div class="sectionTitle">
         <h2 class="gold">CONTACT</h2>
-        <div class="kicker">공식 채널을 깔끔하게</div>
+        <div class="kicker">Keep channels official and simple</div>
       </div>
 
       <div class="contactGrid">
@@ -621,16 +620,15 @@
       </div>
 
       <p class="small" style="margin-top:10px;margin-bottom:0">
-        이메일을 공개하고 싶지 않으면, <b>문의 폼(구글폼)</b> 링크만 두는 방식이 가장 안전합니다.
+        If you don’t want to show an email publicly, use only a Google Form link.
       </p>
     </section>
-
   </main>
 
   <footer>
     <div class="wrap">
       <div class="footRow">
-        <div>© <span id="y"></span> <span class="gold" style="font-family:'Cinzel',serif;letter-spacing:.10em;font-weight:800">JINJIGWAN</span></div>
+        <div>© <span id="y"></span> <span class="gold" style="font-family:'Cinzel',serif;letter-spacing:.12em;font-weight:800">JINJIGWAN</span></div>
         <div class="small">Baking & Cooking for Good · Student-run NGO-style club</div>
       </div>
     </div>
